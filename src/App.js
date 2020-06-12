@@ -1,26 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom'
 import logo from './logo.svg';
 import './App.css';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Weather from './pages/Weather';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  let [currentPage, setCurrentPage] = useState('/');
+  if (currentPage === '/') {
+    return (<Login pageChangerHook={setCurrentPage}/>);
+  }
+  else if (currentPage === '/dashboard/admin') {
+    return (<Dashboard pageChangerHook={setCurrentPage}/>);
+  }
+  else if (currentPage === '/dashboard/employee') {
+    return (<Weather pageChangerHook={setCurrentPage}/>);
+  }
 }
 
 export default App;

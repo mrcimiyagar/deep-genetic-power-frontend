@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #111122;
+  }
+  
+  .field {
+    width: calc(100% - 48px);
+    height: 56px;
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-top: 24px;
+    border-radius: 8px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out;
+  }
+  
+  .field:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+  }
+  
+  .field.active {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  .field.active input {
+    padding: 24px 16px 8px 16px;
+  }
+  
+  .field.active input + label {
+    top: 4px;
+    opacity: 1;
+    color: #512da8;
+  }
+  
+  .field.locked {
+    pointer-events: none;
+  }
+  
+  .field input {
+    height: 56px;
+    position: relative;
+    padding: 0px 16px;
+    text-align: right;
+    border: none;
+    border-radius: 8px;
+    font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    background-color: transparent;
+    color: #282828;
+    outline: none;
+    box-shadow: 0px 4px 20px 0px transparent;
+    transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out,
+      0.1s padding ease-in-out;
+    -webkit-appearance: none;
+  }
+  
+  .field input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .field input::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .field input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .field input:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .field input + label {
+    width: calc(100% - 32px);
+    position: absolute;
+    top: 24px;
+    left: 16px;
+    font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.1s all ease-in-out;
+    text-align: right;
+  }
+  
+  .field input + label.error {
+    width: calc(100% - 32px);
+    text-align: right;
+    color: #ec392f;
+  }
+  
+  .field p.predicted {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #e0e0e0;
+    opacity: 1;
+    pointer-events: none;
+  }
+  
+  #table-wrapper {
+    position:relative;
+  }
+  #table-scroll {
+    height:80vh;
+    overflow:auto;  
+    margin-top:20px;
+  }
+  #table-wrapper table {
+    width:100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+  }
+  #table-wrapper table * {
+    background:#27293d;
+    color:#fff;
+  }
