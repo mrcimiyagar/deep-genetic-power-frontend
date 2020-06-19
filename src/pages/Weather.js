@@ -9,103 +9,6 @@ import {Card, CardBody, CardHeader, CardTitle, Col, Row} from "reactstrap";
 import {Line} from "react-chartjs-2";
 import {chartExample1} from "../variables/charts";
 
-class WeatherBg extends React.Component {
-
-    render(){
-        return (
-            <div className="background">
-                {this.props.weatherDesign.bgUrl === "" ? "" : <img src={this.props.weatherDesign.bgUrl} alt={'weather'}/>}
-            </div>
-        )
-    }
-}
-
-class WeatherHeader extends React.Component {
-    render() {
-        return (
-            <div className="header">
-                <div className="location">
-                    <h3>{this.props.locationName}</h3>
-                </div>
-                <a href="#" className="settingsBtn" onClick={this.props.handleSettingsBtn.bind(this)}>
-
-                    <span className={this.props.weatherUnits === "F" ? "active" : "inactive"}>F°</span>
-                    <span className="">&nbsp;|&nbsp;</span>
-                    <span className={this.props.weatherUnits === "C" ? "active" : "inactive"}>C°</span>
-                </a>
-            </div>
-        );
-    }
-}
-
-class WeatherDisplay extends React.Component {
-    constructor(props) {
-        super(props);
-
-        //set degrees
-        let cDg = Math.round(props.weather.main.temp);
-        let fDg = Math.round(cDg * 9 / 5 + 32);
-
-        const date = new Date();
-
-        this.state = {
-            date : date.toJSON().slice(0,10),
-            time : date.getHours()+":"+date.getMinutes(),
-            celciusDeg : cDg,
-            fahrenheitDeg : fDg
-        }
-
-    }
-
-    componentDidMount() {
-        this.minuteTicker();
-        $(".loadingWeather").fadeOut(500, function() { $(this).remove(); });
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.state.intervalId);
-    }
-
-    minuteTicker () {
-        this.setState({
-            intervalId: setInterval(() => {
-                const date = new Date();
-                this.setState({
-                    date: date.toJSON().slice(0, 10),
-                    time: date.getHours() + ":" + date.getMinutes()
-                })
-            }, 1000)
-        });
-    }
-
-    render() {
-        return(
-            <div className="display flex-center">
-                <div className="icon-container">
-                    {this.props.weatherDesign.icon === "" ? "" : <div className={this.props.weatherDesign.icon}/>}
-                </div>
-                <div className="info">
-          <span className="temperature">
-            { this.props.weatherUnits === "C" ? this.state.celciusDeg : this.state.fahrenheitDeg }°{this.props.weatherUnits}
-          </span>
-                    <span className="conditions">{this.props.weather.description.main}</span>
-                    <span className="date">{this.state.date}</span>
-                    <span className="time">{this.state.time}</span>
-                </div>
-            </div>
-        );
-    }
-}
-
-class WeatherFooter extends React.Component {
-    render() {
-        return (
-            <div className="footer">
-            </div>
-        )
-    }
-}
-
 class Weather extends React.Component {
     constructor(props) {
         super(props);
@@ -248,7 +151,8 @@ class Weather extends React.Component {
             <div style={{
                 display: "flex",
                 flexWrap: "wrap",
-                height: 'auto'
+                height: 'auto',
+                marginTop: 16
             }}>
                 <div style={{
                     display: 'flex',
@@ -277,17 +181,9 @@ class Weather extends React.Component {
                         <div style={{
                             width: '50%',
                             height: 250,
+                            position: "relative"
                         }}>
-                            <div in interval={1500}
-                                  style={{
-                                      width: '100%',
-                                      height: '100%',
-                                  }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                }} enterTransform="rotateY(359deg)" delay={10} timingFn={'ease-in-out'} in>
-                                    <img style={{
+                            <img style={{
                                         width: 100,
                                         height: 100,
                                         position: 'absolute',
@@ -296,11 +192,9 @@ class Weather extends React.Component {
                                         transform: 'translate(-50%, -50%)',
                                         filter: 'drop-shadow(5px 5px 5px #222)',
                                     }} src={windyIcon} alt={'weather'}/>
-                                    <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
+                            <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
                                         , extAlign: "right", color: '#00D6B4', fontSize: 18, lineHeight: 2, fontWeight: 'bold'
                                         , marginRight: -8}}>باد شدید</p>
-                                </div>
-                            </div>
                         </div>
                         <div style={{
                             width: '50%',
@@ -351,17 +245,9 @@ class Weather extends React.Component {
                         <div style={{
                             width: '50%',
                             height: 250,
+                            position: "relative"
                         }}>
-                            <div in interval={1500}
-                                  style={{
-                                      width: '100%',
-                                      height: '100%',
-                                  }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                }} enterTransform="rotateY(359deg)" delay={10} timingFn={'ease-in-out'} in>
-                                    <img style={{
+                            <img style={{
                                         width: 100,
                                         height: 100,
                                         position: 'absolute',
@@ -370,11 +256,9 @@ class Weather extends React.Component {
                                         transform: 'translate(-50%, -50%)',
                                         filter: 'drop-shadow(5px 5px 5px #222)',
                                     }} src={rainIcon} alt={'weather'}/>
-                                    <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
+                            <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
                                         , extAlign: "right", color: '#00D6B4', fontSize: 18, lineHeight: 2, fontWeight: 'bold'
                                         , marginRight: -8}}>باران</p>
-                                </div>
-                            </div>
                         </div>
                         <div style={{
                             width: '50%',
@@ -414,17 +298,9 @@ class Weather extends React.Component {
                         <div style={{
                             width: '50%',
                             height: 250,
+                            position: "relative"
                         }}>
-                            <div in interval={1500}
-                                  style={{
-                                      width: '100%',
-                                      height: '100%',
-                                  }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                }} enterTransform="rotateY(359deg)" delay={10} timingFn={'ease-in-out'} in>
-                                    <img style={{
+                            <img style={{
                                         width: 100,
                                         height: 100,
                                         position: 'absolute',
@@ -433,11 +309,9 @@ class Weather extends React.Component {
                                         transform: 'translate(-50%, -50%)',
                                         filter: 'drop-shadow(5px 5px 5px #222)',
                                     }} src={rainIcon} alt={'weather'}/>
-                                    <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
+                            <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
                                         , extAlign: "right", color: '#00D6B4', fontSize: 18, lineHeight: 2, fontWeight: 'bold'
                                         , marginRight: -8}}>باران</p>
-                                </div>
-                            </div>
                         </div>
                         <div style={{
                             width: '50%',
@@ -488,17 +362,9 @@ class Weather extends React.Component {
                         <div style={{
                             width: '50%',
                             height: 250,
+                            position: "relative"
                         }}>
-                            <div in interval={1500}
-                                  style={{
-                                      width: '100%',
-                                      height: '100%',
-                                  }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                }} enterTransform="rotateY(359deg)" delay={10} timingFn={'ease-in-out'} in>
-                                    <img style={{
+                            <img style={{
                                         width: 100,
                                         height: 100,
                                         position: 'absolute',
@@ -507,11 +373,9 @@ class Weather extends React.Component {
                                         transform: 'translate(-50%, -50%)',
                                         filter: 'drop-shadow(5px 5px 5px #222)',
                                     }} src={stormIcon} alt={'weather'}/>
-                                    <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
+                            <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
                                         , extAlign: "right", color: '#00D6B4', fontSize: 18, lineHeight: 2, fontWeight: 'bold'
                                         , marginRight: -8}}>طوفان</p>
-                                </div>
-                            </div>
                         </div>
                         <div style={{
                             width: '50%',
@@ -534,6 +398,7 @@ class Weather extends React.Component {
                     </div>
                 </div>
                 <div style={{
+                    marginLeft: 16,
                     display: 'flex',
                     flexDirection: 'column',
                     width :  this.state.resizeTrigger ?
@@ -558,17 +423,9 @@ class Weather extends React.Component {
                         <div style={{
                             width: '50%',
                             height: 250,
+                            position: "relative"
                         }}>
-                            <div in interval={1500}
-                                  style={{
-                                      width: '100%',
-                                      height: '100%',
-                                  }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                }} enterTransform="rotateY(359deg)" delay={10} timingFn={'ease-in-out'} in>
-                                    <img style={{
+                            <img style={{
                                         width: 100,
                                         height: 100,
                                         position: 'absolute',
@@ -577,11 +434,9 @@ class Weather extends React.Component {
                                         transform: 'translate(-50%, -50%)',
                                         filter: 'drop-shadow(5px 5px 5px #222)',
                                     }} src={sunnyIcon} alt={'weather'}/>
-                                    <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
+                            <p style={{position: "absolute", left: '50%', top: '80%', transform: 'translate(-50%, -50%)'
                                         , extAlign: "right", color: '#00D6B4', fontSize: 18, lineHeight: 2, fontWeight: 'bold'
                                         , marginRight: -8}}>آفتابی</p>
-                                </div>
-                            </div>
                         </div>
                         <div style={{
                             width: '50%',
@@ -606,8 +461,8 @@ class Weather extends React.Component {
                         <CardHeader>
                             <Row>
                                 <Col className="text-left" sm="6">
-                                    <h5 className="card-category">نمودار دمای امروز</h5>
-                                    <CardTitle tag="h2">دمای امروز تا این ساعت</CardTitle>
+                                    <h5 className="card-category" style={{marginLeft: -32, width: "100%", direction: "rtl", color: "#fff"}}>نمودار دمای امروز</h5>
+                                    <CardTitle tag="h2" style={{marginLeft: -32, width: "100%", direction: "rtl", color: "#fff"}}>دمای امروز تا این ساعت</CardTitle>
                                 </Col>
                             </Row>
                         </CardHeader>

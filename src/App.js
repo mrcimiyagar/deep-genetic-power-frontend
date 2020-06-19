@@ -5,6 +5,9 @@ import './App.css';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Weather from './pages/Weather';
+import ManualDataInput from './pages/ManualDataInput';
+import Calendar from './pages/Calendar';
+import UserProfile from './pages/UserProfile';
 
 function App() {
   let [currentPage, setCurrentPage] = useState('/');
@@ -15,7 +18,7 @@ function App() {
     return (<Dashboard pageChangerHook={setCurrentPage}/>);
   }
   else if (currentPage === '/dashboard/employee') {
-    return (<Weather pageChangerHook={setCurrentPage}/>);
+    return (<UserProfile pageChangerHook={setCurrentPage}/>);
   }
 }
 
