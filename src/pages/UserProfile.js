@@ -73,7 +73,8 @@ class UserProfile extends React.Component {
                                 marginTop: 16,
                                 float: 'left',
                                 padding: '6px 12px',
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                color: '#fff'
                               }}
                               onClick={() => {
                                 this.exitInputData();
@@ -86,10 +87,8 @@ class UserProfile extends React.Component {
 
     return (
       <>
-        <div className="content">
-          <Row>
-            <Col md="6">
-              <form action="../power/forecast-load" method="post" enctype="multipart/form-data">
+        <div className="content" style={{display: "flex", direction: "rtl"}}>
+            <form style={{width: "40%", marginLeft: 32, marginRight: 32}} action="../power/forecast-load" method="post" enctype="multipart/form-data">
                 <Card>
                 <CardHeader style={{
                   width: '100%'
@@ -105,7 +104,8 @@ class UserProfile extends React.Component {
                       <Col>
                       <label style={{
                             width: '100%',
-                            textAlign: 'right'
+                            textAlign: 'right',
+                            color: "#fff"
                           }}>{"انتخاب فایل"}</label>
                           <div
                               style={{
@@ -121,11 +121,13 @@ class UserProfile extends React.Component {
                                 float: 'left',
                                 display: 'inline-block',
                                 padding: '6px 12px',
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                color: "#fff"
                               }}>
                                 <input 
                                   style={{
-                                    display: 'none'
+                                    display: 'none',
+                                    color: "#fff"
                                   }}
                                   name="input" type="file" onChange={(e) => {
                                     let reader = new FileReader();
@@ -147,7 +149,8 @@ class UserProfile extends React.Component {
                                 float: 'left',
                                 display: 'inline-block',
                                 padding: '6px 12px',
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                color: "#fff"
                               }}
                               onClick={() => {
                                 this.inputData();
@@ -162,7 +165,8 @@ class UserProfile extends React.Component {
                                 float: 'left',
                                 display: 'inline-block',
                                 padding: '6px 12px',
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                color: "#fff"
                               }}>
                                 از سرویس
                               </label>
@@ -172,7 +176,8 @@ class UserProfile extends React.Component {
                                 display: 'inline-block',
                                 padding: '6px 12px',
                                 float: 'right',
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                color: "#fff"
                               }}>
                               {this.state.files.name}
                               </label>
@@ -215,10 +220,8 @@ class UserProfile extends React.Component {
                   </Button>
                 </CardFooter>
               </Card>
-              </form>
-            </Col>
-            <Col md="6">
-              <Card className="card-chart">
+            </form>
+            <Card className="card-chart" style={{width: "40%"}}>
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
@@ -236,8 +239,6 @@ class UserProfile extends React.Component {
                   </div>
                 </CardBody>
               </Card>
-            </Col>
-          </Row>
           <Row>
             <Col>
               <div id="tableRef">
