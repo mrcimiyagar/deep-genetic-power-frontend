@@ -15,11 +15,8 @@ function App() {
   if (currentPage === '/') {
     return (<Login pageChangerHook={setCurrentPage}/>);
   }
-  else if (currentPage === '/dashboard/admin') {
-    return (<Dashboard pageChangerHook={setCurrentPage}/>);
-  }
-  else if (currentPage === '/dashboard/employee') {
-    return (<Container pageChangerHook={setCurrentPage}/>);
+  else if (currentPage.startsWith('/dashboard/admin') || currentPage.startsWith('/dashboard/employee')) {
+    return (<Container pageChangerHook={setCurrentPage} child={currentPage}/>);
   }
 }
 

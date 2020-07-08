@@ -94,10 +94,10 @@ export default function Login(props) {
                    .then(res => { 
                        role.value = res.role;
                        if (res.role === 'admin') {
-                           props.pageChangerHook('/dashboard/admin');
+                           props.pageChangerHook('/dashboard/admin/archive');
                        }
                        else if (res.role === 'employee') {
-                           props.pageChangerHook('/dashboard/employee');
+                           props.pageChangerHook('/dashboard/employee/forecast');
                        }
                    });
             }}>

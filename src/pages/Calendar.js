@@ -4,6 +4,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import StatesDD from './StatesDD';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -60,8 +61,8 @@ export default function Calendar(props) {
                         title: '30',
                         img: 'https://material-ui.com/static/images/grid-list/plant.jpg'
                     },{
-                    title: '01',
-                    img: 'https://material-ui.com/static/images/grid-list/plant.jpg'
+                        title: '01',
+                        img: 'https://material-ui.com/static/images/grid-list/plant.jpg'
                     },
                     {
                         title: '02',
@@ -195,7 +196,7 @@ export default function Calendar(props) {
                         counter++;
                         return (
                             <GridListTile key={tile.img} onClick={() => {
-                                props.recordClickListener(index);
+                                props.pageChangerHook('/dashboard/admin/dashboard');
                             }}>
                                 <div style={{
                                     width: '100%',
