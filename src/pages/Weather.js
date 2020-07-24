@@ -158,8 +158,8 @@ class Weather extends React.Component {
                     display: 'flex',
                     flexWrap: "wrap",
                     width : this.state.resizeTrigger ?
-                        window.innerWidth > 800 ? '49%' : '100%' :
-                        window.innerWidth > 800 ? '49%' : '100%',
+                        window.innerWidth > 800 ? '45%' : '100%' :
+                        window.innerWidth > 800 ? '45%' : '100%',
                     height : 'auto',
                     minHeight: 600,
                     backgroundColor: '#27293d',
@@ -402,8 +402,8 @@ class Weather extends React.Component {
                     display: 'flex',
                     flexDirection: 'column',
                     width :  this.state.resizeTrigger ?
-                        window.innerWidth > 800 ? '49%' : '100%' :
-                        window.innerWidth > 800 ? '49%' : '100%',
+                        window.innerWidth > 800 ? '45%' : '100%' :
+                        window.innerWidth > 800 ? '45%' : '100%',
                     height : 600,
                     backgroundColor: '#27293d',
                     borderRadius: 8,
