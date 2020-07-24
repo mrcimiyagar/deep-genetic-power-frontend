@@ -10,17 +10,17 @@ import role from "../roleWrapper";
 export default function Container (props) {
     return (
         <div style={{display: "flex", direction: "rtl", width: "100%", height: "100%"}}>
-            <div style={{backgroundColor: "blue", width: 200, height: "100vh"}}>
-                <button onClick={() => {
+            <div style={{color: "#fff", backgroundColor: "blue", width: 200, height: "100vh", paddingRight: 24}}>
+                <p onClick={() => {
                     if (role.value === "admin") {
                         props.pageChangerHook("/dashboard/admin/archive");
                     } else if (role.value === "employee") {
                         props.pageChangerHook("/dashboard/employee/forecast");
                     }
-                }}><p>{role.value === "admin" ? "آرشیو" : "پیشبینی"}</p></button>
-                <button onClick={() => {
+                }}>{role.value === "admin" ? "آرشیو" : "پیشبینی"}</p>
+                <p onClick={() => {
                     props.pageChangerHook("/dashboard/employee/weather");
-                }}><p>آب و هوا</p></button>
+                }}>آب و هوا</p>
             </div>
             <div style={{width: "calc(100% - 200px)", height: "100vh"}}>
                 {
